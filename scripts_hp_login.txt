@@ -1,0 +1,10 @@
+CREATE TABLE HP_LOGIN (
+       LOGIN_USER_NAME      varchar(20) NOT NULL,
+       LOGIN_PASSWORD       nvarchar(150) NULL
+)
+;
+
+
+ALTER TABLE HP_LOGIN
+       ADD PRIMARY KEY (LOGIN_USER_NAME)
+;
