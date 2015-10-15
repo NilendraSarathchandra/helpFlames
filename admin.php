@@ -15,7 +15,7 @@ include('session.php');
 		<![endif]-->
 		<link href="css/styles.css" rel="stylesheet"/>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="../helpflames/js/json2.js"></script>
+        <script type="text/javascript" src="js/validation.js"></script>
 	</head>
 	<body>
 	
@@ -29,11 +29,11 @@ include('session.php');
 		success: function (response) {
         // We get the element having id of display_info and put the response inside it
 		$.each(response,function(i,val){
-		   if (val.ANSWER==""){
-        $( '#Question').append('<div id=">'+val.POST_ID+'">'+'<hr>'+'<h4>Q - '+val.QUESTION+'<br>'+'<h5>'+'A - '+'Question will be answered shortly.'+' <button class="btn btn-primary pull-right btnAnswer" type="button" id="'+val.POST_ID+'">'+'Answer'+'</button>'+'<hr>'+'</div>');                 
+		   if (val.ANSWER=="" || val.ANSWER == null){
+        $( '#Question').append('<div id="'+val.POST_ID+'">'+'<hr>'+'<h4>Q - '+val.QUESTION+'<br>'+'<h5>'+'A - '+'Question will be answered shortly.'+' <button class="btn btn-primary pull-right btnAnswer" type="button" id="'+val.POST_ID+'">'+'Answer'+'</button>'+'<hr>'+'</div>');                 
              }
               else{
-        $( '#Question').append('<div id=">'+val.POST_ID+'">'+'<hr>'+'<h4>Q - '+val.QUESTION+'<br>'+'<h5>'+'A - '+val.ANSWER+' <button class="btn btn-primary pull-right btnAnswer" type="button" id="'+val.POST_ID+'">Answer</button>'+'<hr>'+'</div>');                 
+        $( '#Question').append('<div id="'+val.POST_ID+'">'+'<hr>'+'<h4>Q - '+val.QUESTION+'<br>'+'<h5>'+'A - '+val.ANSWER+' <button class="btn btn-primary pull-right btnAnswer" type="button" id="'+val.POST_ID+'">Answer</button>'+'<hr>'+'</div>');                 
             }
             
              $('#'+val.POST_ID).click(function() {
@@ -63,7 +63,10 @@ include('session.php');
        
        $(document).ready(function() {
         loadQuestions();
-      
+      $('#txtQuestion').onkeypress(function (){
+          var limit=3000;
+          characterLimitation($(this),characters);
+      });
        });
 	</script>
 <div class="wrapper">
