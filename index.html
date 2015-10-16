@@ -13,6 +13,15 @@
 		<link href="css/styles.css" rel="stylesheet">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="js/validation.js"></script>
+        <script type="text/javascript" src="js/facebookplugins.js"></script>
+        
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 	</head>
 	<body>
 	
@@ -30,7 +39,8 @@
         $( '#Question').append('<div id="'+val.POST_ID+'">'+'<hr>'+'<h4>Q - '+val.QUESTION+'<br>'+'<h5>'+'A - '+'Question will be answered shortly.'+'<hr>'+'</div>');                 
              }
               else{
-        $( '#Question').append('<div id="'+val.POST_ID+'">'+'<hr>'+'<h4>Q - '+val.QUESTION+'<br>'+'<h5>'+'A - '+val.ANSWER+'<hr>'+'</div>');                 
+        $( '#Question').append('<div id="'+val.POST_ID+'">'+'<hr>'+'<h4>Q - '+val.QUESTION+'<br>'+'<h5>'+'A - '+val.ANSWER+'<hr>'+'</div>');
+        $( '#Question').append('<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>');
             } 
     })
     },
@@ -156,10 +166,13 @@
                               <div class="well"> 
                                    <form class="form-horizontal" role="form">
                                     <h4>Post your question</h4>
-                                     <div class="form-group" style="padding:14px;">
-                                      <textarea id="txtQuestion" class="form-control" placeholder="Any question/doubts regarding J'pura Flames"></textarea>
+                                     <div class="form-group" style="padding:14px;margin-bottom: -15px;">
+                                      <textarea style="height: 80px;" id="txtQuestion" class="form-control" placeholder="Any question/doubts regarding J'pura Flames"></textarea>
+                                   
+                                     </div>
+                                    <div class="form-group" style="padding:14px; margin-bottom: -15px;">
+                                    <button class="btn btn-primary pull-right" type="button" id="btnPost">Post</button>
                                     </div>
-                                    <button class="btn btn-primary pull-right" type="button" id="btnPost">Post</button><ul class="list-inline"><li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li><li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li><li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li></ul>
                                   </form>
                               </div>
                            
@@ -169,42 +182,19 @@
                           
                           <!-- main col right -->
                           <div class="col-sm-7">
-                               
-
-
                                <div class="panel panel-default">
                                  <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Question and Answers</h4></div>
                                   <div class="panel-body">
                                     <img src="http://blogs.richardson.com/wp-content/uploads/2015/08/best-sales-question-300-150x150.jpg" class="img-circle pull-right"> <a href="https://www.facebook.com/Jpuraflames">J'pura Flames </a>related Questions
                                     <div class="clearfix"></div>
-                                    <div id="Question"></div>
-                                    <div id="Answer"></div>
-                                    <div class="input-group">
-                                      <div class="input-group-btn">
-                                      <button class="btn btn-default">+1</button><button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
-                                      </div>
-                                      <input type="text" class="form-control" placeholder="Add a comment..">
+                                    <div id="Question">
+                                        
                                     </div>
-                                    </form>
+                                    <div id="Answer"></div>
                                     
                                   </div>
                                </div>
-
-
-                            
-                               <div class="panel panel-default">
-                                <div class="panel-thumbnail"><img src="/assets/example/bg_4.jpg" class="img-responsive"></div>
-                                <div class="panel-body">
-                                  <p class="lead">Social Good</p>
-                                  <p>1,200 Followers, 83 Posts</p>
-                                  
-                                  <p>
-                                    <img src="https://lh6.googleusercontent.com/-5cTTMHjjnzs/AAAAAAAAAAI/AAAAAAAAAFk/vgza68M4p2s/s28-c-k-no/photo.jpg" width="28px" height="28px">
-                                    <img src="https://lh4.googleusercontent.com/-6aFMDiaLg5M/AAAAAAAAAAI/AAAAAAAABdM/XjnG8z60Ug0/s28-c-k-no/photo.jpg" width="28px" height="28px">
-                                    <img src="https://lh4.googleusercontent.com/-9Yw2jNffJlE/AAAAAAAAAAI/AAAAAAAAAAA/u3WcFXvK-g8/s28-c-k-no/photo.jpg" width="28px" height="28px">
-                                  </p>
-                                </div>
-                              </div>
+   
                             
                           </div>
                        </div><!--/row-->

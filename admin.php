@@ -16,6 +16,13 @@ include('session.php');
 		<link href="css/styles.css" rel="stylesheet"/>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="js/validation.js"></script>
+        <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 	</head>
 	<body>
 	
@@ -31,10 +38,12 @@ include('session.php');
 		$.each(response,function(i,val){
 		   if (val.ANSWER=="" || val.ANSWER == null){
         $( '#Question').append('<div id="'+val.POST_ID+'">'+'<hr>'+'<h4>Q - '+val.QUESTION+'<br>'+'<h5>'+'A - '+'Question will be answered shortly.'+' <button class="btn btn-primary pull-right btnAnswer" type="button" id="'+val.POST_ID+'">'+'Answer'+'</button>'+'<hr>'+'</div>');                 
-             }
+        $( '#Question').append('<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>');    
+        }
               else{
         $( '#Question').append('<div id="'+val.POST_ID+'">'+'<hr>'+'<h4>Q - '+val.QUESTION+'<br>'+'<h5>'+'A - '+val.ANSWER+' <button class="btn btn-primary pull-right btnAnswer" type="button" id="'+val.POST_ID+'">Answer</button>'+'<hr>'+'</div>');                 
-            }
+        $( '#Question').append('<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>');   
+        }
             
              $('#'+val.POST_ID).click(function() {
                if($('#txtQuestion').val()==""){
@@ -94,12 +103,7 @@ include('session.php');
                 </ul>
               
               	<!-- tiny only nav-->
-              <ul class="nav visible-xs" id="xs-menu">
-                  	<li><a href="#featured" class="text-center"><i class="glyphicon glyphicon-list-alt"></i></a></li>
-                    <li><a href="#stories" class="text-center"><i class="glyphicon glyphicon-list"></i></a></li>
-                  	<li><a href="#" class="text-center"><i class="glyphicon glyphicon-paperclip"></i></a></li>
-                    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-refresh"></i></a></li>
-                </ul>
+
               
             </div>
             <!-- /sidebar -->
@@ -158,7 +162,7 @@ include('session.php');
                                    <form class="form-horizontal" role="form">
                                     <h4>Post your answer here and select the right question to be posted</h4>
                                      <div class="form-group" style="padding:14px;">
-                                      <textarea id="txtQuestion" class="form-control" placeholder="Please answer wisely because they matter the most"></textarea>
+                                      <textarea style="height: 80px;" id="txtQuestion" class="form-control" placeholder="Please answer wisely because they matter the most"></textarea>
                                     </div>
                                     
                                   </form>
@@ -180,32 +184,13 @@ include('session.php');
                                     <div class="clearfix"></div>
                                     <div id="Question"></div>
                                     <div id="Answer"></div>
-                                    <div class="input-group">
-                                      <div class="input-group-btn">
-                                      <button class="btn btn-default">+1</button><button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
-                                      </div>
-                                      <input type="text" class="form-control" placeholder="Add a comment..">
-                                    </div>
-                                    </form>
-                                    
+
                                   </div>
                                </div>
 
 
                             
-                               <div class="panel panel-default">
-                                <div class="panel-thumbnail"><img src="/assets/example/bg_4.jpg" class="img-responsive"></div>
-                                <div class="panel-body">
-                                  <p class="lead">Social Good</p>
-                                  <p>1,200 Followers, 83 Posts</p>
-                                  
-                                  <p>
-                                    <img src="https://lh6.googleusercontent.com/-5cTTMHjjnzs/AAAAAAAAAAI/AAAAAAAAAFk/vgza68M4p2s/s28-c-k-no/photo.jpg" width="28px" height="28px">
-                                    <img src="https://lh4.googleusercontent.com/-6aFMDiaLg5M/AAAAAAAAAAI/AAAAAAAABdM/XjnG8z60Ug0/s28-c-k-no/photo.jpg" width="28px" height="28px">
-                                    <img src="https://lh4.googleusercontent.com/-9Yw2jNffJlE/AAAAAAAAAAI/AAAAAAAAAAA/u3WcFXvK-g8/s28-c-k-no/photo.jpg" width="28px" height="28px">
-                                  </p>
-                                </div>
-                              </div>
+                              
                             
                           </div>
                        </div><!--/row-->
