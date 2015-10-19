@@ -16,13 +16,7 @@ include('session.php');
 		<link href="css/styles.css" rel="stylesheet"/>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="js/validation.js"></script>
-        <script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+        
 	</head>
 	<body>
 	
@@ -38,12 +32,10 @@ include('session.php');
 		$.each(response,function(i,val){
 		   if (val.ANSWER=="" || val.ANSWER == null){
         $( '#Question').append('<div id="'+val.POST_ID+'">'+'<hr>'+'<h4>Q - '+val.QUESTION+'<br>'+'<h5>'+'A - '+'Question will be answered shortly.'+' <button class="btn btn-primary pull-right btnAnswer" type="button" id="'+val.POST_ID+'">'+'Answer'+'</button>'+'<hr>'+'</div>');                 
-        $( '#Question').append('<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>');    
-        }
+              }
               else{
         $( '#Question').append('<div id="'+val.POST_ID+'">'+'<hr>'+'<h4>Q - '+val.QUESTION+'<br>'+'<h5>'+'A - '+val.ANSWER+' <button class="btn btn-primary pull-right btnAnswer" type="button" id="'+val.POST_ID+'">Answer</button>'+'<hr>'+'</div>');                 
-        $( '#Question').append('<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>');   
-        }
+             }
             
              $('#'+val.POST_ID).click(function() {
                if($('#txtQuestion').val()==""){
